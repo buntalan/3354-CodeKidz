@@ -3,7 +3,10 @@ Definitions, Acronyms, and Abbreviations
 Functional requirements 
 1.	The app shall allow users to modify events
   1.1	The app shall allow users to create events with starting and ending times
-  1.2 The app shall allow users to edit events
-
+  1.2 	The app shall allow users to edit events
+2.	The app shall allow users to view the calendar
+  2.1	The app shall allow the user to view the calendar in a monthly format
+	2.1.1 The app shall allow the user to view the events for each day
+  2.2	The app should allow the user to view the calendar in a weekly format
+  2.3	The app should allow the user to view the calendar in a daily format
 Use Case Diagram 
-
