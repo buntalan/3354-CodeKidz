@@ -1,1 +1,9 @@
+Definitions, Acronyms, and Abbreviations 
+
+Functional requirements 
+1.	The app shall allow users to modify events
+  1.1	The app shall allow users to create events with starting and ending times
+  1.2 The app shall allow users to edit events
+
+Use Case Diagram 
 
