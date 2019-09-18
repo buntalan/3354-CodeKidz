@@ -17,4 +17,7 @@ Functional requirements
   2.4	The app should allow the user to view all events in the future as a list
 3.	The app should allow the user to scroll between months
   3.1   The app should show holidays and weekends in special colors.
+  3.2  The app should be able to scroll through years.
+  3.3  The app should be able to send notifications about the events.
+  3.4  The app should have different calenders in parallel.
 Use Case Diagram 
