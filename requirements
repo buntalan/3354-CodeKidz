@@ -6,7 +6,7 @@ Functional Requirements
   1.2 The app shall allow users to edit events
   1.2.1 The app shall allow users to delete events
   1.3	The app should check for time conficts between events
-  1.4	The app should allow users to add weekly preiodical events
+  1.4	The app should allow users to add weekly periodical events
   1.5	The app should allow users to create/remove event categories
   1.6	The app should allow users to color code said event categories
   1.7 The app should allow users to set alerts for events
@@ -17,9 +17,8 @@ Functional Requirements
   2.3	The app shall allow the user to view the calendar in a daily format
   2.4	The app should allow the user to view all events in the future as a list
 3.	The app should allow the user to scroll between months
-  3.1   The app should show holidays and weekends in special colors.
+  3.1  The app should show holidays and weekends in special colors.
   3.2  The app should be able to scroll through years.
-  3.3  The app should be able to send notifications about the events.
   3.4  The app should have different calenders in parallel.
 4. The app should allow the user to share events
 
