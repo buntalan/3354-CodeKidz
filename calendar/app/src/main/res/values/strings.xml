@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">calendar</string>
+    <string name="app_name">Calendar</string>
+    <string name="title_activity_view_weekly">Weekly</string>
 </resources>
