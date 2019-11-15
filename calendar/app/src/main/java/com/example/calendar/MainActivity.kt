@@ -3,12 +3,11 @@ package com.example.calenderview
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CalendarView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import com.example.calendar.ViewWeekly
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnLongClickListener {
     var msg: String? = null;
     var mButton: Button? = null;
 
@@ -22,8 +21,15 @@ class MainActivity : AppCompatActivity() {
             msg = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year
             Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
         }
+        // Change activity to ViewWeekly on long press
+        calendarView.setOnLongClickListener {
+            Toast.makeText(this, "LongClick works!, ", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@MainActivity, ViewWeekly::class.java)
+            //intent.putExtra();
+            startActivity(intent)
 
-        //calendarView?.setOnClickListener(new)
+            true
+        }
 
         mButton = findViewById(R.id.buttonTest) as Button
         mButton!!.setOnClickListener {
@@ -33,5 +39,15 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
+    }
+
+    @Override
+    override fun onLongClick(p0: View?): Boolean {
+        val intentWeek = Intent(this@MainActivity, ViewWeekly::class.java)
+        // Pass intent some data
+        // intent.puttExtra()
+        startActivity(intent)
+        return true
     }
 }
