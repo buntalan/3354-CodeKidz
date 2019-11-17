@@ -4,12 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.View.OnClickListener
 import android.widget.*
 import com.example.calendar.ViewWeekly
 
 class MainActivity : AppCompatActivity(), View.OnLongClickListener {
-    var msg: String? = null;
-    var mButton: Button? = null;
+    var msg: String? = null
+    var mButtonEvent: Button? = null
+    var mButtonWeekly: Button? = null
+    var datePass: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,24 +24,31 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
             msg = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year
             Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
         }
-        // Change activity to ViewWeekly on long press
-        calendarView.setOnLongClickListener {
-            Toast.makeText(this, "LongClick works!, ", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this@MainActivity, ViewWeekly::class.java)
-            //intent.putExtra();
-            startActivity(intent)
 
-            true
-        }
-
-        mButton = findViewById(R.id.buttonTest) as Button
-        mButton!!.setOnClickListener {
-            val intent = Intent(this@MainActivity, ViewWeekly::class.java)
-            //intent.putExtra();
-            startActivity(intent)
+        mButtonEvent = findViewById(R.id.buttonEvent) as Button
+        mButtonEvent!!.setOnClickListener{
+            // Create EventActivity
+//            val intentEvent = Intent(this@MainActivity, ViewEvent::class.java)
+//            // Add possible intent data
+//            startActivity(intentEvent)
         }
 
 
+        mButtonWeekly = findViewById(R.id.buttonWeek) as Button
+        mButtonWeekly!!.setOnClickListener {
+            val intentWeekly = ViewWeekly.newIntent(this@MainActivity, calendarView.date)
+            startActivity(intentWeekly)
+        }
+
+//        // Change activity to ViewWeekly on long press
+//        mButtonWeekly!!.setOnLongClickListener {
+//            Toast.makeText(this, "LongClick works!, ", Toast.LENGTH_SHORT).show()
+//            val intent = Intent(this@MainActivity, ViewWeekly::class.java)
+//            //intent.putExtra();
+//            startActivity(intent)
+//
+//            true
+//        }
 
     }
 
