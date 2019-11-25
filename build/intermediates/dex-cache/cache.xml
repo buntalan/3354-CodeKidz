@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/purvi/Desktop/Calendar-Day-View-master/library/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="872d8f5b0fabac47ad8d59b0bb4b50abba4cd1b5">
+        <dex dex="/Users/purvi/Desktop/Calendar-Day-View-master/sample/build/intermediates/pre-dexed/debug/classes_006f6063c3737fba4b196d4e9f10ba987f6acff7.jar" />
+    </item>
+
+</items>
