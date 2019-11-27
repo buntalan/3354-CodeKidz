@@ -3,4 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorCalendarDayBackground">#Dfffff</color>
+    <color name="selectedDayBackground">#000000</color>
+    <color name="notThisMonthDayBackground">#100000</color>
+    <color name="colorInvertedText">#050050</color>
+    <color name="colorCalendarDivider">#609609</color>
 </resources>
