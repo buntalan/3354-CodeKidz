@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.addevent.eventInfo">
+    tools:context="com.example.calendar.eventInfo">
 
     <TextView
         android:id="@+id/eventFormText"
@@ -30,7 +30,6 @@
             android:id="@+id/titleText"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:drawableBottom="titleForTitle"
             android:text="@string/title">
         </TextView>
 
@@ -39,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
-            android:inputType="date"
+            android:inputType="text"
             android:text="@string/enterTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="datetime"
             android:text="@string/enterStartTime"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
-            android:inputType="time"
+            android:inputType="datetime"
             android:text="@string/enterEndTime"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

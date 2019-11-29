@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.*
-import com.example.addevent.eventInfo
 import com.example.calendar.ViewWeekly
+import com.example.calendar.eventInfo
 
 class MainActivity : AppCompatActivity(), View.OnLongClickListener {
     var msg: String? = null

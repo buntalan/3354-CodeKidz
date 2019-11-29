@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         // Event info
-        <activity android:name="com.example.addevent.eventInfo"></activity>
+        <activity android:name="com.example.calendar.eventInfo"></activity>
         // ViewWeekly
         <activity android:name="com.example.calendar.ViewWeekly"></activity>
         // MainAcitity(MonthlyView)
