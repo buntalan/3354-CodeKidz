@@ -17,7 +17,7 @@
         app:headerColumnTextColor="@color/toolbar_text"
         app:headerRowPadding="12dp"
         app:columnGap="8dp"
-        app:noOfVisibleDays="5"
+        app:noOfVisibleDays="1"
         app:autoLimitTime="false"
         app:headerRowBackgroundColor="@color/toolbar"
         app:dayBackgroundColor="#05000000"
