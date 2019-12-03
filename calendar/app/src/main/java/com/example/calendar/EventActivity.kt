@@ -23,7 +23,9 @@ class EventActivity : AppCompatActivity() {
     private class MyCustomAdapter(context: Context): BaseAdapter() {
 
         private val mContext : Context
-        private val eventList = arrayListOf<Event>()
+        private val eventList = arrayListOf<Event>(
+            Event("Engineering Final", 4, 3,2019, 5, 30)
+        )
 
         init {
             mContext = context
@@ -34,7 +36,7 @@ class EventActivity : AppCompatActivity() {
 
         //how many rows in the list
         override fun getCount(): Int {
-            return 7
+            return eventList.size
         }
 
         //Renders out each row
@@ -46,10 +48,12 @@ class EventActivity : AppCompatActivity() {
             val layoutInflator = LayoutInflater.from(mContext)
             val rowMain = layoutInflator.inflate(R.layout.activity_event_row, viewGroup, false)
 
+            val currentEvent = eventList[position]
             val nameTextView = rowMain.findViewById<TextView>(R.id.name_textview)
-            nameTextView.text = "Event Title"
+            nameTextView.text = currentEvent.title
+
             val positionTextView = rowMain.findViewById<TextView>(R.id.position_textview)
-            positionTextView.text = "Event Number: $position"
+            positionTextView.text = "Date: ${currentEvent.day}/${currentEvent.month}/${currentEvent.year}\t\t${currentEvent.hour}:${currentEvent.minute}"
             return rowMain
         }
     }
