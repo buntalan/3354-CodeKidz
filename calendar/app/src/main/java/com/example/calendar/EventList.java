@@ -18,10 +18,10 @@ public class EventList {
     public boolean removeEvent(Event event){
         return list.remove(event);
     }
-    @Override String toString(){
+    @Override public String toString(){
         StringBuilder sb = new StringBuilder();
         for (Event x: list){
-            sb.append(Event.toString() + "\n");
+            sb.append(x.toString() + "\n");
         }
         return sb.toString();
     }
