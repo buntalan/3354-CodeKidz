@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import com.example.calendar.EventForm
 import com.example.calendar.ViewWeekly
-import com.example.calendar.eventInfo
 
 class MainActivity : AppCompatActivity(), View.OnLongClickListener {
     var msg: String? = null
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
         mButtonEvent = findViewById<Button>(R.id.buttonEvent)
         mButtonEvent!!.setOnClickListener{
             // Create EventActivity
-            val intentEvent = Intent(this@MainActivity, eventInfo::class.java)
+            val intentEvent = Intent(this@MainActivity, EventForm::class.java)
             // Add possible intent data
             startActivity(intentEvent)
         }

@@ -1,45 +1,53 @@
-package com.example.calendar;
+package com.example.calendar
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
-import com.example.calenderview.R;
-import java.util.Calendar;
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
+import android.widget.DatePicker
+import android.widget.TextView
+import android.widget.TimePicker
+import android.widget.Toast
 
-public class EventForm extends AppCompatActivity implements
-        View.OnClickListener {
+import com.example.calenderview.R
+import java.util.Calendar
 
-    Button btnDatePicker, btnTimePicker;
-    EditText txtDate, txtTime;
-    private int mYear, mMonth, mDay, mHour, mMinute;
+class EventForm : AppCompatActivity(), View.OnClickListener {
+    private val mYear: Int = 0
+    private val mMonth: Int = 0
+    private val mDay: Int = 0
+    private val mHour: Int = 0
+    private val mMinute: Int = 0
 
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_event_form)
 
-        btnDatePicker=(Button)findViewById(R.id.btn_date);
-        btnTimePicker=(Button)findViewById(R.id.btn_time);
-        txtDate=(EditText)findViewById(R.id.in_date);
-        txtTime=(EditText)findViewById(R.id.in_time);
-
-        btnDatePicker.setOnClickListener(this);
-        btnTimePicker.setOnClickListener(this);
-
+        val btnDate = findViewById<Button>(R.id.btn_date)
+        val btnTime = findViewById<Button>(R.id.btn_time)
+        val txtDate = findViewById<TextView>(R.id.in_date)
+        val txtTime = findViewById<TextView>(R.id.in_time)
+        btnDate.setOnClickListener{
+            Toast.makeText(this@EventForm, "Hello", Toast.LENGTH_SHORT).show()
+        }
     }
 
-    @Override
+    override fun onClick(v: View) {
+        Toast.makeText(this@EventForm, "Hello", Toast.LENGTH_SHORT).show()
+    }
+
+
+    /*@Override
     public void onClick(View v) {
 
         if (v == btnDatePicker) {
 
             // Get Current Date
+            Toast t = Toast.makeText(this, "Hello", Toast.LENGTH_LONG);
+            t.show();
             final Calendar c = Calendar.getInstance();
             mYear = c.get(Calendar.YEAR);
             mMonth = c.get(Calendar.MONTH);
@@ -79,5 +87,5 @@ public class EventForm extends AppCompatActivity implements
                     }, mHour, mMinute, false);
             timePickerDialog.show();
         }
-    }
+    }*/
 }

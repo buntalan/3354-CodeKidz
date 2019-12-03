@@ -18,12 +18,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/textView"
+            android:id="@+id/in_title"
             android:layout_width="match_parent"
             android:layout_height="75dp"
+            android:fontFamily="sans-serif-light"
             android:gravity="bottom|center_horizontal"
             android:hint="@string/enterTitle"
-            android:textSize="25sp" />
+            android:inputType="textCapWords"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColorHighlight="#00897B"
+            android:textColorLink="#085850"
+            android:textSize="25sp"
+            android:typeface="normal"
+            android:importantForAutofill="no" />
 
         <TableRow
             android:id="@+id/tableRow2"
@@ -31,19 +38,24 @@
             android:layout_height="100dp"
             android:gravity="center">
 
-            <EditText
+            <TextView
                 android:id="@+id/in_date"
                 android:layout_width="226dp"
                 android:layout_height="85dp"
-                android:gravity="bottom|center_horizontal"
-                android:hint="Date"
-                android:textSize="25dp" />
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:hint="@string/date"
+                android:importantForAutofill="no"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/btn_date"
                 android:layout_width="150dp"
-                android:layout_height="75dp"
-                android:text="SELECT DATE" />
+                android:layout_height="85dp"
+                android:backgroundTintMode="screen"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/select_date" />
         </TableRow>
 
         <TableRow
@@ -53,19 +65,24 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/in_time"
                 android:layout_width="226dp"
                 android:layout_height="85dp"
-                android:gravity="bottom|center_horizontal"
-                android:hint="Time"
-                android:textSize="25dp" />
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:hint="@string/time"
+                android:importantForAutofill="no"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/btn_time"
                 android:layout_width="150dp"
-                android:layout_height="75dp"
-                android:text="SELECT TIME" />
+                android:layout_height="85dp"
+                android:backgroundTintMode="screen"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/select_time" />
         </TableRow>
 
     </LinearLayout>
@@ -87,16 +104,23 @@
         <Button
             android:id="@+id/saveButton"
             style="@style/Widget.AppCompat.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_margin="20dp"
+            android:backgroundTintMode="screen"
+            android:fontFamily="sans-serif-light"
             android:text="@string/save"></Button>
 
         <Button
             android:id="@+id/eventListButton"
             style="@style/Widget.AppCompat.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/eventList"></Button>
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_margin="20dp"
+            android:backgroundTintMode="screen"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/eventList"
+            android:theme="@style/AppTheme.NoActionBar"></Button>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
