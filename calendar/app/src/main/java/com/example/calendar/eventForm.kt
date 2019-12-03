@@ -6,9 +6,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import com.example.calenderview.R
 
-class eventInfo : AppCompatActivity(), View.OnClickListener {
+class eventForm : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
