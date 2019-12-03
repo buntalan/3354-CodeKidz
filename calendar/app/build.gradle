@@ -37,7 +37,7 @@ dependencies {
     implementation 'com.sickmartian.calendarview:calendarview:1.0.0'
     implementation 'com.github.thellmund.Android-Week-View:core:4.0.0'
     implementation 'me.jlurena:revolvingweekview:1.0.0'
-}
+    implementation 'com.github.alamkanak:android-week-view:1.2.6'}
 
 allprojects {
     repositories {
