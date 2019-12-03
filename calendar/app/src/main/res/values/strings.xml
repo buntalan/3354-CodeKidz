@@ -17,7 +17,7 @@
     <!--"For eventForm -->
     <string name="eventFormTitle">Event</string>
     <string name="title">Title </string>
-    <string name="enterTitle">Enter Title</string>
+    <string name="enterTitle">Title</string>
     <string name="startTime">Start Time</string>
     <string name="enterStartTime">Enter start time</string>
     <string name="endTime">End Time</string>
@@ -39,4 +39,8 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
+    <string name="time">Time</string>
+    <string name="select_time">SELECT TIME</string>
+    <string name="select_date">SELECT DATE</string>
+    <string name="date">Date</string>
 </resources>

@@ -1,79 +1,80 @@
 package com.example.calendar;
 
-import java.util.Calendar;
+import androidx.annotation.NonNull;
 
 public class Event {
-    String id;
-    String title;
-    Calendar startTime;
-    Calendar endTime;
-    String location;
-    int color;
-    boolean isAllDay;
-    boolean isCanceled;
+    private String Title;
+    private int Year, Month, Day, Hour, Minute;
+    private String AM_PM;
 
-    // Getters + Setters
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    Event(String t, int day, int month, int year, int hour, int minute, String str){
+        this.Title = t;
+        this.Day = day;
+        this.Month = month;
+        this.Year = year;
+        this.Hour = hour;
+        this.Minute = minute;
+        this.AM_PM = str;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
-    public Calendar getStartTime() {
-        return startTime;
+    public int getYear() {
+        return Year;
     }
 
-    public void setStartTime(Calendar startTime) {
-        this.startTime = startTime;
+    public void setYear(int year) {
+        Year = year;
     }
 
-    public Calendar getEndTime() {
-        return endTime;
+    public int getMonth() {
+        return Month;
     }
 
-    public void setEndTime(Calendar endTime) {
-        this.endTime = endTime;
+    public void setMonth(int month) {
+        Month = month;
     }
 
-    public String getLocation() {
-        return location;
+    public int getDay() {
+        return Day;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setDay(int day) {
+        Day = day;
     }
 
-    public int getColor() {
-        return color;
+    public int getHour() {
+        return Hour;
     }
 
-    public void setColor(int color) {
-        this.color = color;
+    public void setHour(int hour) {
+        Hour = hour;
     }
 
-    public boolean isAllDay() {
-        return isAllDay;
+    public int getMinute() {
+        return Minute;
     }
 
-    public void setAllDay(boolean allDay) {
-        isAllDay = allDay;
+    public void setMinute(int minute) {
+        Minute = minute;
     }
 
-    public boolean isCanceled() {
-        return isCanceled;
+    public String getAM_PM() {
+        return AM_PM;
     }
 
-    public void setCanceled(boolean canceled) {
-        isCanceled = canceled;
+    public void setAM_PM(String AM_PM) {
+        this.AM_PM = AM_PM;
+    }
+    public String returnDate(){
+        StringBuilder sb = new StringBuilder();
+        return sb.append("Date: " + this.Day + "/" + this.Month + "/" + this.Year +
+                "\t\t" + this.Hour + ":" + this.Minute + "\t" + this.AM_PM).toString();
     }
 }
