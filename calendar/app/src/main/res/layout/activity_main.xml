@@ -12,8 +12,11 @@
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:firstDayOfWeek="1"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
+        android:background="#D7FFFFFF"
         />
 
     <LinearLayout
@@ -23,16 +26,22 @@
         android:gravity= "center_horizontal"
         >
 
-        <Button
+        <Button style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/buttonEvent"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="25dp"
+            android:layout_margin="25dp"
+            android:background="#FFFFFF"
             android:text="@string/textEvent" />
 
-        <Button
+        <Button style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/buttonWeek"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="25dp"
+            android:layout_margin="25dp"
+            android:background="#FFFFFF"
             android:text="@string/textWeek" />
     </LinearLayout>
 
