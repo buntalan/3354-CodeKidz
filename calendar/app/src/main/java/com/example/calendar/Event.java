@@ -5,14 +5,16 @@ import androidx.annotation.NonNull;
 public class Event {
     private String Title;
     private int Year, Month, Day, Hour, Minute;
+    private String AM_PM;
 
-    Event(String t, int day, int month, int year, int hour, int minute){
+    Event(String t, int day, int month, int year, int hour, int minute, String str){
         this.Title = t;
         this.Day = day;
         this.Month = month;
         this.Year = year;
         this.Hour = hour;
         this.Minute = minute;
+        this.AM_PM = str;
     }
 
     public String getTitle() {
@@ -61,5 +63,18 @@ public class Event {
 
     public void setMinute(int minute) {
         Minute = minute;
+    }
+
+    public String getAM_PM() {
+        return AM_PM;
+    }
+
+    public void setAM_PM(String AM_PM) {
+        this.AM_PM = AM_PM;
+    }
+    public String returnDate(){
+        StringBuilder sb = new StringBuilder();
+        return sb.append("Date: " + this.Day + "/" + this.Month + "/" + this.Year +
+                "\t\t" + this.Hour + ":" + this.Minute + "\t" + this.AM_PM).toString();
     }
 }

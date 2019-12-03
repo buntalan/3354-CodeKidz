@@ -13,11 +13,11 @@ class eventInfo : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_event_form)
+        setContentView(R.layout.activity_event_form)
 
-        val eventTitle : TextView = findViewById(R.id.eventFormText)
-        val editTitle : EditText = findViewById(R.id.editTitleText)
-        val saveButton : Button = findViewById(R.id.saveButton)
+        //val eventTitle : TextView = findViewById(R.id.eventFormText)
+        //val editTitle : EditText = findViewById(R.id.editTitleText)
+        //val saveButton : Button = findViewById(R.id.saveButton)
         val eventListButton : Button = findViewById(R.id.eventListButton)
         //val editText : EditText=findViewById(R.id.editText3)
 
