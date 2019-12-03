@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".ViewYearly" />
-        <activity android:name=".eventForm" />
+        <activity android:name=".EventActivity" />
         <activity android:name=".ViewWeekly" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -20,8 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.calendar.EventActivity" />
-        <activity android:name="com.example.calendar.EventForm" />
     </application>
 
 </manifest>

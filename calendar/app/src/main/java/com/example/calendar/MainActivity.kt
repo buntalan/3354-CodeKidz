@@ -13,7 +13,6 @@ import androidx.appcompat.widget.Toolbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 import android.widget.*
-import com.example.calendar.EventForm
 import com.example.calendar.ViewWeekly
 
 class MainActivity : AppCompatActivity(), View.OnLongClickListener {
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
         mButtonEvent = findViewById<Button>(R.id.buttonEvent)
         mButtonEvent!!.setOnClickListener{
             // Create EventActivity
-            val intentEvent = Intent(this@MainActivity, EventForm::class.java)
+            val intentEvent = Intent(this@MainActivity, EventActivity::class.java)
             // Add possible intent data
             startActivity(intentEvent)
         }
@@ -85,10 +84,10 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
             startActivity(ViewWeekly.newIntent(this, calendarView.date))
             return true
         }
-//        if (id == R.id.menu_to_event) {
-//            startActivity(Intent(this@MainActivity, ::class.java))
-//            return true
-//        }
+        if (id == R.id.menu_to_event) {
+            startActivity(Intent(this@MainActivity, EventActivity::class.java))
+            return true
+        }
 
         return super.onOptionsItemSelected(item)
     }

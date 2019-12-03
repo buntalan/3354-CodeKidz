@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.example.calenderview.R
+import com.example.calendar.R
 
 class EventActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){

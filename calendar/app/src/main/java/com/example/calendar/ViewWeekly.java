@@ -292,6 +292,7 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
                 return true;
             case R.id.menu_to_event:
                 // Go to event
+                startActivity(new Intent(ViewWeekly.this, EventActivity.class));
                 return true;
             default:
                 // Action not recognized, invoke superclass
