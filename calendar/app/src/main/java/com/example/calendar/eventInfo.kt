@@ -1,5 +1,6 @@
 package com.example.calendar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -19,6 +20,14 @@ class eventInfo : AppCompatActivity(), View.OnClickListener {
         val saveButton : Button = findViewById(R.id.saveButton)
         val eventListButton : Button = findViewById(R.id.eventListButton)
         //val editText : EditText=findViewById(R.id.editText3)
+
+        var mButton : Button = findViewById<Button>(R.id.eventListButton)
+        mButton!!.setOnClickListener{
+            // Create EventActivity
+            val intentEvent = Intent(this@eventInfo, EventActivity::class.java)
+            // Add possible intent data
+            startActivity(intentEvent)
+        }
     }
 
     @Override

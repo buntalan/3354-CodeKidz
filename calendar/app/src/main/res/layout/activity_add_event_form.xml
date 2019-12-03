@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.calendar.eventInfo">
+    tools:context="com.example.calendar.eventInfo"
+    android:background="#009688">
 
     <TextView
         android:id="@+id/eventFormText"
@@ -60,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
+            android:hint="@string/enterStartTime"
             android:inputType="date|datetime|time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

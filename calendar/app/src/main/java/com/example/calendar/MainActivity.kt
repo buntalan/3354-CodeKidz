@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.View.OnClickListener
 import android.widget.*
 import com.example.calendar.ViewWeekly
 import com.example.calendar.eventInfo
@@ -20,13 +19,13 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
         setContentView(R.layout.activity_main)
 
         val calendarView = findViewById<CalendarView>(R.id.calendarView)
-        calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
+        calendarView?.setOnDateChangeListener { _, year, month, dayOfMonth ->
             // Note that months are indexed from 0. So, 0 means January, 1 means february, 2 means march etc.
-            msg = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year
+            msg = "Selected date is " + (month + 1) + "/"  + dayOfMonth + "/" + year
             Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
         }
 
-        mButtonEvent = findViewById(R.id.buttonEvent) as Button
+        mButtonEvent = findViewById<Button>(R.id.buttonEvent)
         mButtonEvent!!.setOnClickListener{
             // Create EventActivity
             val intentEvent = Intent(this@MainActivity, eventInfo::class.java)
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
         }
 
 
-        mButtonWeekly = findViewById(R.id.buttonWeek) as Button
+        mButtonWeekly = findViewById<Button>(R.id.buttonWeek)
         mButtonWeekly!!.setOnClickListener {
             val intentWeekly = ViewWeekly.newIntent(this@MainActivity, calendarView.date)
             startActivity(intentWeekly)
