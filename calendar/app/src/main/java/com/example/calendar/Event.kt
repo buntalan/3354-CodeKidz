@@ -2,6 +2,7 @@ package com.example.calendar
 
 import com.alamkanak.weekview.WeekViewDisplayable
 import com.alamkanak.weekview.WeekViewEvent
+import me.jlurena.revolvingweekview.WeekViewEvent
 import java.util.*
 
 data class Event(
@@ -34,4 +35,8 @@ data class Event(
             .build()
     }
 
+    // TODO: Need to implement this
+//    override fun toString(): String {
+//        return super.toString()
+//    }
 }

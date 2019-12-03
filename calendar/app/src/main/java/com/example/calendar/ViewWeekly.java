@@ -147,7 +147,7 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
     }
 
     // Will need to change this method to put actual events.
-    // Will use this method to load in actual events from file.
+    // TODO: Will use this method to load in actual events from file.
     @Override
     public List<? extends WeekViewEvent> onWeekViewLoad() {
         // Populate the week view with some events.
