@@ -6,15 +6,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.*
+import com.example.calendar.EventDay
 import com.example.calendar.ViewWeekly
 import com.example.calendar.eventInfo
 
-class MainActivity : AppCompatActivity(), View.OnLongClickListener {
+class MainActivity : AppCompatActivity(), View.OnLongClickListener, View.OnClickListener{
     var msg: String? = null
-    var mButtonEvent: Button? = null
-    var mButtonWeekly: Button? = null
-    var datePass: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,37 +19,16 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
         val calendarView = findViewById<CalendarView>(R.id.calendarView)
         calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
             // Note that months are indexed from 0. So, 0 means January, 1 means february, 2 means march etc.
-            msg = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year
+            msg = "Selected date is " + (month + 1) +  "/" + dayOfMonth + "/" + year
             Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
         }
 
-        mButtonEvent = findViewById(R.id.buttonEvent) as Button
-        mButtonEvent!!.setOnClickListener{
-            // Create EventActivity
-            val intentEvent = Intent(this@MainActivity, eventInfo::class.java)
-            // Add possible intent data
-            startActivity(intentEvent)
-        }
-
-
-        mButtonWeekly = findViewById(R.id.buttonWeek) as Button
-        mButtonWeekly!!.setOnClickListener {
-            val intentWeekly = ViewWeekly.newIntent(this@MainActivity, calendarView.date)
-            startActivity(intentWeekly)
-        }
-
-//        // Change activity to ViewWeekly on long press
-//        mButtonWeekly!!.setOnLongClickListener {
-//            Toast.makeText(this, "LongClick works!, ", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(this@MainActivity, ViewWeekly::class.java)
-//            //intent.putExtra();
-//            startActivity(intent)
-//
-//            true
-//        }
-
     }
 
+    @Override
+    override fun onClick(v: View?) {
+        val intentDay = Intent(this@MainActivity, EventDay::class.java)
+    }
     @Override
     override fun onLongClick(p0: View?): Boolean {
         val intentWeek = Intent(this@MainActivity, ViewWeekly::class.java)
