@@ -5,96 +5,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#009688"
     tools:context="com.example.calendar.EventForm">
 
-    <TableRow
-        android:id="@+id/tableRow"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="80dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/in_time"
-            android:layout_width="226dp"
-            android:layout_height="85dp"
-            android:layout_below="@+id/in_date"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true" />
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:gravity="bottom|center_horizontal"
+            android:hint="@string/enterTitle"
+            android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/btn_time"
-            android:layout_width="144dp"
-            android:layout_height="72dp"
-            android:layout_below="@+id/btn_date"
-            android:layout_alignStart="@+id/btn_date"
-            android:layout_alignLeft="@+id/btn_date"
-            android:layout_marginStart="3dp"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="-4dp"
-            android:text="SELECT TIME" />
-    </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center">
 
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableRow">
+            <EditText
+                android:id="@+id/in_date"
+                android:layout_width="226dp"
+                android:layout_height="85dp"
+                android:gravity="bottom|center_horizontal"
+                android:hint="Date"
+                android:textSize="25dp" />
 
-        <EditText
-            android:id="@+id/in_date"
-            android:layout_width="226dp"
-            android:layout_height="85dp"
-            android:layout_marginTop="71dp" />
+            <Button
+                android:id="@+id/btn_date"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
+                android:text="SELECT DATE" />
+        </TableRow>
 
-        <Button
-            android:id="@+id/btn_date"
-            android:layout_width="138dp"
-            android:layout_height="69dp"
-            android:text="SELECT DATE" />
-    </TableRow>
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/in_time"
+                android:layout_width="226dp"
+                android:layout_height="85dp"
+                android:gravity="bottom|center_horizontal"
+                android:hint="Time"
+                android:textSize="25dp" />
+
+            <Button
+                android:id="@+id/btn_time"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
+                android:text="SELECT TIME" />
+        </TableRow>
+
+    </LinearLayout>
 
     <LinearLayout
-        android:layout_width="265dp"
-        android:layout_height="166dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="355dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableRow2">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <Button
             android:id="@+id/saveButton"
-            style="?android:attr/buttonBarButtonStyle"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/save">
-        </Button>
+            android:text="@string/save"></Button>
 
         <Button
             android:id="@+id/eventListButton"
-            style="?android:attr/buttonBarButtonStyle"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/eventList">
-        </Button>
+            android:text="@string/eventList"></Button>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

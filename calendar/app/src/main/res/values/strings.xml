@@ -8,7 +8,7 @@
     // For events
     <string name="eventFormTitle">Event</string>
     <string name="title">Title </string>
-    <string name="enterTitle">Enter Title</string>
+    <string name="enterTitle">Title</string>
     <string name="startTime">Start Time</string>
     <string name="enterStartTime">Enter start time</string>
     <string name="endTime">End Time</string>
