@@ -120,22 +120,22 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
         });
 
         // Set EventClicker for this class
-        mWeekView.setOnEventClickListener(this);
+        //mWeekView.setOnEventClickListener(this);
 
         // Set WeekLoader for this class for infinite horizontal scrolling
         mWeekView.setWeekViewLoader(this);
 
         // Set long press listener for this class
-        mWeekView.setEventLongPressListener(this);
+        //mWeekView.setEventLongPressListener(this);
 
         // Set empty view click listener
-        mWeekView.setEmptyViewClickListener(this);
+        //mWeekView.setEmptyViewClickListener(this);
 
         // Set empty view click listener
-        mWeekView.setAddEventClickListener(this);
+        //mWeekView.setAddEventClickListener(this);
 
         // Set drag and drop listener
-        mWeekView.setDropListener(this);
+        //mWeekView.setDropListener(this);
 
         // Can choose other Listeners, but probably wont
 //        setupDateTimeInterpreter();
