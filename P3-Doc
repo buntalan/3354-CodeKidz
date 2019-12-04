@@ -1,9 +1,6 @@
-Design Pattern: Model-View-Controller
-Where used:
-  calendar/app/src/main/java/com/example/calendar/:
-    EventActivity.kt = View
-    Event.java = Model
-    EventForm.kt = Controller
+Design Pattern: Singleton
+Where used: /calendar/app/src/main/java/com/example/calendar/DataHolder.java
+  DataHolder is a Singleton Class as it is used only 1 time to create an instance of the ArrayList of events
 
 Location of test classes:
   
