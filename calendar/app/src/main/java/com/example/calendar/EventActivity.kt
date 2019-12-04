@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
 import android.widget.*
+import android.view.ContextMenu
 import androidx.appcompat.widget.Toolbar
 import java.text.SimpleDateFormat
 import java.util.*
@@ -25,20 +26,29 @@ class EventActivity : AppCompatActivity() {
             val newEvent = Event(intent.getStringExtra("event_title"), intent.getSerializableExtra("event_cal") as Calendar)
             eventList.add(newEvent)
         }
+
         val listView = findViewById<ListView>(R.id.main_listview)
         listView.adapter = MyCustomAdapter(this, eventList)//custom adapter
+        registerForContextMenu(listView)
+
+
         listView.setOnItemClickListener{ _, _, _, _ ->
-            val t = Toast.makeText(this@EventActivity, "Hello", Toast.LENGTH_LONG)
-            t.show()
+            val popup = PopupWindow(listView)
         }
         if(eventList.isEmpty()){
             Toast.makeText(this@EventActivity,"No Events Currently", Toast.LENGTH_LONG).show()
         }
     }
 
+    @Override
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?){
+        super.onCreateContextMenu(menu, v, menuInfo)
+        val inflater = menuInflater
+        inflater.inflate(R.menu.navigation_menu_listitem, menu)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.navigation_menu_event, menu)
-        menuInflater.inflate(R.menu.navigation_menu_listitem, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
