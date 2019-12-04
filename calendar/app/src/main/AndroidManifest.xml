@@ -13,6 +13,7 @@
         <activity android:name=".ViewYearly" />
         <activity android:name=".EventActivity" />
         <activity android:name=".ViewWeekly" />
+        <activity android:name=".EventForm" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

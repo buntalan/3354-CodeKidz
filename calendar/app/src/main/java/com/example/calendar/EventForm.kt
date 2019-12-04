@@ -11,6 +11,7 @@ import android.content.Intent
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -67,9 +68,10 @@ class EventForm : AppCompatActivity(), View.OnClickListener {
                 cal.get(Calendar.MINUTE), false).show()
         }
         btnSave.setOnClickListener {
-            val myEvent = Event(txtTitle.toString(), cal)
             val myIntent = Intent(this@EventForm, EventActivity::class.java)
-            //myIntent.putExtra("NewEvent", myEvent)
+            myIntent.putExtra("event_title", txtTitle.text.toString())
+            myIntent.putExtra("event_cal", cal)
+            startActivity(myIntent)
         }
     }
 

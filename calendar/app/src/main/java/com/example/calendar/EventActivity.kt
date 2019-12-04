@@ -4,33 +4,29 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.calendar.R
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class EventActivity : AppCompatActivity() {
+    public val eventList = arrayListOf<Event>()
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
 
-        val eventList = arrayListOf(
-            Event("Engineering Final", 4, 3,2019, 5, 30, "PM"),
-            Event("Engineering Final", 4, 3,2019, 5, 30, "PM"),
-            Event("Engineering Final", 4, 3,2019, 5, 30, "PM"),
-            Event("Engineering Final", 4, 3,2019, 5, 30, "PM"),
-            Event("Engineering Final", 4, 3,2019, 5, 30, "PM"),
-            Event("Engineering Final", 4, 3,2019, 5, 30, "PM"),
-            Event("Engineering Final", 4, 3,2019, 5, 30, "PM"),
-            Event("Engineering Final", 4, 3,2019, 5, 30, "PM"),
-            Event("Engineering Final", 4, 3,2019, 5, 30, "PM"),
-            Event("Engineering Final", 4, 3,2019, 5, 30, "PM")
-        )
-
+        if(intent.hasExtra("event_title")){
+            val newEvent = Event(intent.getStringExtra("event_title"), intent.getSerializableExtra("event_cal") as Calendar)
+            eventList.add(newEvent)
+        }
         val listView = findViewById<ListView>(R.id.main_listview)
-
         listView.adapter = MyCustomAdapter(this, eventList)//custom adapter
         listView.setOnItemClickListener{parent, view, position, id ->
             val t = Toast.makeText(this@EventActivity, "Hello", Toast.LENGTH_LONG)
@@ -69,7 +65,9 @@ class EventActivity : AppCompatActivity() {
             nameTextView.text = currentEvent.title
 
             val positionTextView = rowMain.findViewById<TextView>(R.id.position_textview)
-            positionTextView.text = currentEvent.returnDate()
+            val myFormat = "EEE, MMM dd, yyyy\t\t\thh:mm a"
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            positionTextView.text = sdf.format(currentEvent.calendar.time)
             return rowMain
         }
     }

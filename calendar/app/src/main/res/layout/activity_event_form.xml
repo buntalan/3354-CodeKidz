@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#009688"
-    tools:context="com.example.calendar.EventForm">
+    tools:context=".EventForm">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -112,7 +112,8 @@
             android:layout_margin="20dp"
             android:backgroundTintMode="screen"
             android:fontFamily="sans-serif-light"
-            android:text="@string/save"></Button>
+            android:text="@string/save">
+        </Button>
 
         <Button
             android:id="@+id/eventListButton"
@@ -123,7 +124,8 @@
             android:backgroundTintMode="screen"
             android:fontFamily="sans-serif-light"
             android:text="@string/eventList"
-            android:theme="@style/AppTheme.NoActionBar"></Button>
+            android:theme="@style/AppTheme.NoActionBar">
+        </Button>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

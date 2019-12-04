@@ -17,7 +17,6 @@ import com.example.calendar.ViewWeekly
 
 class MainActivity : AppCompatActivity(), View.OnLongClickListener {
     var msg: String? = null
-    var datePass: String? = null
     var mButtonEvent: Button? = null
     var mButtonWeekly: Button? = null
 
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
         mButtonEvent = findViewById<Button>(R.id.buttonEvent)
         mButtonEvent!!.setOnClickListener{
             // Create EventActivity
-            val intentEvent = Intent(this@MainActivity, EventActivity::class.java)
+            val intentEvent = Intent(this@MainActivity, EventForm::class.java)
             // Add possible intent data
             startActivity(intentEvent)
         }
@@ -85,7 +84,7 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
             return true
         }
         if (id == R.id.menu_to_event) {
-            startActivity(Intent(this@MainActivity, EventActivity::class.java))
+            startActivity(Intent(this@MainActivity, EventForm::class.java))
             return true
         }
 

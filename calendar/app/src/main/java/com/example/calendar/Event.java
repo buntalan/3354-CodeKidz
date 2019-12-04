@@ -1,6 +1,5 @@
 package com.example.calendar;
 
-
 import java.util.Calendar;
 
 public class Event {
@@ -21,4 +20,7 @@ public class Event {
     }
 
 
+    public Calendar getCalendar() {
+        return calendar;
+    }
 }
