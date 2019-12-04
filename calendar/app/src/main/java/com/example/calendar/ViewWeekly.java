@@ -4,6 +4,7 @@ import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.view.Menu;
 
 import com.example.calendar.R;
 
+import org.threeten.bp.DayOfWeek;
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.format.TextStyle;
 
@@ -44,6 +46,10 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
     // WeekViewType
     private int mWeekViewType;
 
+    // Event
+    private ArrayList<Event> eventList = DataHolder.getInstance().events;
+    // private val eventList = DataHolder.getInstance().events as ArrayList<Event>
+
     // Random class for number gen - for random color gen
     private static final Random random = new Random();
 
@@ -65,6 +71,8 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
     private int weekNumber;
     private int month;
     private int year;
+    private int week;
+
 
     // Generate random color - For Events
     private static @ColorInt int randomColor() {
@@ -94,6 +102,7 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
         weekNumber = getIntent().getIntExtra(NUMBER_OF_WEEK, 0);
         month = getIntent().getIntExtra(MONTH, 0);
         year = getIntent().getIntExtra(YEAR, 1970);
+
 
         // Ger reference for xml layout
         mWeekView = (WeekView) findViewById(R.id.weekView);
@@ -129,6 +138,7 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
         mWeekView.setDropListener(this);
 
         // Can choose other Listeners, but probably wont
+//        setupDateTimeInterpreter();
 
     }
 
@@ -166,24 +176,36 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
     // Will need to change this method to put actual events.
     // TODO: Will use this method to load in actual events from file.
     @Override
+    @TargetApi(24)
     public List<? extends WeekViewEvent> onWeekViewLoad() {
         // Populate the week view with some events.
         List<WeekViewEvent> events = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            DayTime startTime = new DayTime(LocalDateTime.now().plusHours(i * (random.nextInt(3) + 1)));
-            DayTime endTime = new DayTime(startTime);
-            endTime.addMinutes(random.nextInt(30) + 30);
-            WeekViewEvent event = new WeekViewEvent("ID" + i, "Event " + i, startTime, endTime);
-            event.setColor(randomColor());
-            events.add(event);
-        }
+        Calendar calendar = new GregorianCalendar();
+        DayTime startTime;
+        DayTime endTime;
+        WeekViewEvent event;
+//        for (int i = 0; i < 10; i++) {
+//            DayTime startTime = new DayTime(LocalDateTime.now().plusHours(i * (random.nextInt(3) + 1)));
+//            DayTime endTime = new DayTime(startTime);
+//            endTime.addMinutes(random.nextInt(30) + 30);
+//            WeekViewEvent event = new WeekViewEvent("ID" + i, "Event " + i, startTime, endTime);
+//            event.setColor(randomColor());
+//            events.add(event);
+//        }
 
         // Day Hour Minute
-        // How to set new events
-        DayTime startTime = new DayTime(day % 7, hour, 0);
-        DayTime endTime = new DayTime(day % 7, hour + 1, 0);
-        WeekViewEvent event = new WeekViewEvent("ID" + 0, "Event Experiment", startTime, endTime);
-        events.add(event);
+        // How to set new event
+
+        for (int i = 0; i < eventList.size(); i++) {
+            calendar.setTime(eventList.get(i).getCalendar().getTime());
+            week = calendar.get(Calendar.WEEK_OF_YEAR);
+            if (week == weekNumber) {
+                startTime = new DayTime(calendar.get(Calendar.DAY_OF_WEEK) - 1, calendar.get(Calendar.HOUR_OF_DAY) - 1, calendar.get(Calendar.MINUTE));
+                endTime = new DayTime(calendar.get(Calendar.DAY_OF_WEEK) - 1, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
+                event = new WeekViewEvent("ID" + 0, eventList.get(i).getTitle(), startTime, endTime);
+                events.add(event);
+            }
+        }
 
         return events;
     }
@@ -224,6 +246,7 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
 
         return intent;
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

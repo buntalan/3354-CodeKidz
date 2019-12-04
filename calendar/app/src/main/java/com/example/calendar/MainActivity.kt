@@ -14,11 +14,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 import android.widget.*
 import com.example.calendar.ViewWeekly
+import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnLongClickListener {
     var msg: String? = null
     var mButtonEvent: Button? = null
     var mButtonWeekly: Button? = null
+    var calendar: Calendar? = null
+    var week: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,9 @@ class MainActivity : AppCompatActivity(), View.OnLongClickListener {
             // Note that months are indexed from 0. So, 0 means January, 1 means february, 2 means march etc.
             msg = "Selected date is " + (month + 1) + "/"  + dayOfMonth + "/" + year
             Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
+            calendar = GregorianCalendar()
+            calendar!!.set(year, month, dayOfMonth)
+            week = calendar!!.get(Calendar.WEEK_OF_YEAR)
         }
 
         mButtonEvent = findViewById<Button>(R.id.buttonEvent)
