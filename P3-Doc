@@ -12,9 +12,11 @@ Instruction to build and use software:
   All relavent files to build and run this calendar program are in the calendar folder.
   Open this folder in AndroidStudio and wait for AndroidStudio to build the project.
   Once AndroidStudio finishes building the project, hit the run button and the emulated android phone should open the calendar.
-  The calendar will open in Month view. There will also be button below the month for the different functions available.
-  By choosing the Monthly view, Daily view, or Weekly view from the bar you can access the different views.
-  Pressing the event button will take you to the event page that asks you to create an event.
-  On the Event page, you can get back to the monthly view or save the event.
-  Pressing the week view button will take you to the week view based on the current week of the month.
-  Pressing the event view will take you to a list of the events for the date currently selected.
+  The calendar will open in Month view.
+  There is a drop down menu on the top right on every page that gives you options to change views.
+  Choosing Weekly will take you to a week view.
+  From here, the drop down has options to change view to Three day or Daily.
+  Each page also has an event option in the drop down menu.
+  Clicking this option will take you to the list of events.
+  This page has a return to home option that take you back to the Month view.
+  On Month view, there is also an add events button. Pressing this will take you to a page that allows you to add events.
