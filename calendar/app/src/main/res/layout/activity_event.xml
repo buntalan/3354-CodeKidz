@@ -9,11 +9,12 @@
 
     <include
         android:id="@+id/monthlyToolBar"
-        layout="@layout/toolbar"></include>
+        layout="@layout/toolbar">
+    </include>
 
     <LinearLayout
-        android:layout_width="413dp"
-        android:layout_height="548dp"
+        android:layout_width="416dp"
+        android:layout_height="611dp"
         android:background="#009688"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
