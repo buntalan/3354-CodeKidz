@@ -4,15 +4,18 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.*
 import android.view.ContextMenu
+import android.widget.AdapterView.AdapterContextMenuInfo
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class EventActivity : AppCompatActivity() {
+class EventActivity : AppCompatActivity(){
     private val eventList = DataHolder.getInstance().events as ArrayList<Event>
 
     override fun onCreate(savedInstanceState: Bundle?){
@@ -29,15 +32,11 @@ class EventActivity : AppCompatActivity() {
 
         val listView = findViewById<ListView>(R.id.main_listview)
         listView.adapter = MyCustomAdapter(this, eventList)//custom adapter
-        registerForContextMenu(listView)
 
-
-        listView.setOnItemClickListener{ _, _, _, _ ->
-            val popup = PopupWindow(listView)
-        }
         if(eventList.isEmpty()){
             Toast.makeText(this@EventActivity,"No Events Currently", Toast.LENGTH_LONG).show()
         }
+
     }
 
     @Override
@@ -47,10 +46,24 @@ class EventActivity : AppCompatActivity() {
         inflater.inflate(R.menu.navigation_menu_listitem, menu)
     }
 
+    override fun onContextItemSelected(item: MenuItem?):Boolean {
+        val info = item!!.menuInfo as AdapterContextMenuInfo
+        return when(item.itemId){
+            R.id.menu_edit_event->{
+                return true
+            }
+            R.id.menu_delete_event->{
+                return true
+            }
+            else-> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.navigation_menu_event, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
 
     @Override
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -97,6 +110,15 @@ class EventActivity : AppCompatActivity() {
             val myFormat = "EEE, MMM dd, yyyy\t\t\thh:mm a"
             val sdf = SimpleDateFormat(myFormat, Locale.US)
             positionTextView.text = sdf.format(currentEvent.calendar.time)
+
+            val deleteButton = rowMain.findViewById<ImageButton>(R.id.deleteButton)
+            deleteButton.setTag(position)
+
+            deleteButton.setOnClickListener {
+                eventList.removeAt(deleteButton.tag as Int)
+                notifyDataSetChanged()
+            }
+
             return rowMain
         }
     }

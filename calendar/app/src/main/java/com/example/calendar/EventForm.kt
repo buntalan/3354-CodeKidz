@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class EventForm : AppCompatActivity(), View.OnClickListener {
+    private val eventList = DataHolder.getInstance().events as ArrayList<Event>
 
     @TargetApi(24)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +73,18 @@ class EventForm : AppCompatActivity(), View.OnClickListener {
             if(txtTitle.text.toString() == "" || txtDate.text == "" || txtTime.text == ""){
                 Toast.makeText(this@EventForm, "All Fields Must Be Filled", Toast.LENGTH_SHORT).show()
             }
-            else {
+            var boolean = true
+            eventList.forEach{
+                if(it.title.equals(txtTitle.text.toString())){
+                    boolean = false
+                    Toast.makeText(this@EventForm, "Duplicate Event Name!", Toast.LENGTH_SHORT).show()
+                }
+                if(it.calendar.time == cal.time){
+                    boolean = false
+                    Toast.makeText(this@EventForm, "Duplicate Event Time!", Toast.LENGTH_SHORT).show()
+                }
+            }
+            if(boolean) {
                 val myIntent = Intent(this@EventForm, EventActivity::class.java)
                 myIntent.putExtra("event_title", txtTitle.text.toString())
                 myIntent.putExtra("event_cal", cal)
