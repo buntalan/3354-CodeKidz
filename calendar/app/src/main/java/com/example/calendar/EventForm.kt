@@ -7,12 +7,10 @@ import android.view.View
 import android.widget.Button
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.calendar.Event
-
-import com.example.calenderview.R
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -70,6 +68,8 @@ class EventForm : AppCompatActivity(), View.OnClickListener {
         }
         btnSave.setOnClickListener {
             val myEvent = Event(txtTitle.toString(), cal)
+            val myIntent = Intent(this@EventForm, EventActivity::class.java)
+            //myIntent.putExtra("NewEvent", myEvent)
         }
     }
 
