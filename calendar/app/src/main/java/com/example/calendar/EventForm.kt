@@ -1,27 +1,29 @@
 package com.example.calendar
 
+import android.annotation.TargetApi
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.TextView
-import android.widget.TimePicker
 import android.widget.Toast
+import com.example.calendar.Event
 
 import com.example.calenderview.R
-import java.util.Calendar
+import java.text.SimpleDateFormat
+import java.util.*
 
 class EventForm : AppCompatActivity(), View.OnClickListener {
-    private val mYear: Int = 0
+    /*private val mYear: Int = 0
     private val mMonth: Int = 0
     private val mDay: Int = 0
     private val mHour: Int = 0
-    private val mMinute: Int = 0
+    private val mMinute: Int = 0*/
 
-
+    @TargetApi(24)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_form)
@@ -30,62 +32,47 @@ class EventForm : AppCompatActivity(), View.OnClickListener {
         val btnTime = findViewById<Button>(R.id.btn_time)
         val txtDate = findViewById<TextView>(R.id.in_date)
         val txtTime = findViewById<TextView>(R.id.in_time)
+        val txtTitle = findViewById<EditText>(R.id.in_title)
+
+        val btnSave = findViewById<Button>(R.id.saveButton)
+
+        val cal = Calendar.getInstance()
+
+        val dateSetListener = DatePickerDialog.OnDateSetListener{view, year, month, dayOfMonth ->
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, month)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            val myFormat = "EEE, MMM dd, yyyy" // mention the format you need
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            txtDate.text = sdf.format(cal.time)
+        }
+
         btnDate.setOnClickListener{
-            Toast.makeText(this@EventForm, "Hello", Toast.LENGTH_SHORT).show()
+            DatePickerDialog(this@EventForm, dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)).show()
+        }
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+            cal.set(Calendar.HOUR_OF_DAY, hourOfDay)
+            cal.set(Calendar.MINUTE, minute)
+
+            val myFormat = "hh:mm a"
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            txtTime.text = sdf.format(cal.time)
+        }
+
+        btnTime.setOnClickListener{
+            TimePickerDialog(this@EventForm, timeSetListener,
+                cal.get(Calendar.HOUR_OF_DAY),
+                cal.get(Calendar.MINUTE), false).show()
+        }
+        btnSave.setOnClickListener {
+            val myEvent = Event(txtTitle.toString(), cal)
         }
     }
 
     override fun onClick(v: View) {
-        Toast.makeText(this@EventForm, "Hello", Toast.LENGTH_SHORT).show()
     }
-
-
-    /*@Override
-    public void onClick(View v) {
-
-        if (v == btnDatePicker) {
-
-            // Get Current Date
-            Toast t = Toast.makeText(this, "Hello", Toast.LENGTH_LONG);
-            t.show();
-            final Calendar c = Calendar.getInstance();
-            mYear = c.get(Calendar.YEAR);
-            mMonth = c.get(Calendar.MONTH);
-            mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
-
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-
-                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
-                        }
-                    }, mYear, mMonth, mDay);
-            datePickerDialog.show();
-        }
-        if (v == btnTimePicker) {
-
-            // Get Current Time
-            final Calendar c = Calendar.getInstance();
-            mHour = c.get(Calendar.HOUR_OF_DAY);
-            mMinute = c.get(Calendar.MINUTE);
-
-            // Launch Time Picker Dialog
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                    new TimePickerDialog.OnTimeSetListener() {
-
-                        @Override
-                        public void onTimeSet(TimePicker view, int hourOfDay,
-                                              int minute) {
-
-                            txtTime.setText(hourOfDay + ":" + minute);
-                        }
-                    }, mHour, mMinute, false);
-            timePickerDialog.show();
-        }
-    }*/
 }

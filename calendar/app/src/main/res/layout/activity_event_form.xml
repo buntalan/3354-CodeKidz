@@ -21,16 +21,19 @@
             android:id="@+id/in_title"
             android:layout_width="match_parent"
             android:layout_height="75dp"
+            android:background="#009688"
             android:fontFamily="sans-serif-light"
             android:gravity="bottom|center_horizontal"
             android:hint="@string/enterTitle"
+            android:importantForAutofill="no"
             android:inputType="textCapWords"
+            android:singleLine="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColorHighlight="#00897B"
-            android:textColorLink="#085850"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#D2D8D8"
+            android:textCursorDrawable="@color/colorCalendarDayBackground"
             android:textSize="25sp"
-            android:typeface="normal"
-            android:importantForAutofill="no" />
+            android:typeface="normal" />
 
         <TableRow
             android:id="@+id/tableRow2"
