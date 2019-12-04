@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_to_week"
+        android:title="@string/to_weekly"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_to_day"
+        android:title="@string/to_daily"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_to_year"
+        android:title="@string/to_yearly"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_to_event"
+        android:title="@string/to_event"
+        app:showAsAction="never"/>
+</menu>
