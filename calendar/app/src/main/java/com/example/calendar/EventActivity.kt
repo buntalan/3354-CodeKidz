@@ -4,23 +4,22 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.ArrayAdapter
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
-import com.example.calendar.R
+import androidx.appcompat.widget.Toolbar
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 class EventActivity : AppCompatActivity() {
-    public val eventList = arrayListOf<Event>()
+    val eventList = arrayListOf<Event>()
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
+
+        val myToolBar: Toolbar = findViewById(R.id.monthlyToolBar)
+        setSupportActionBar(myToolBar)
 
         if(intent.hasExtra("event_title")){
             val newEvent = Event(intent.getStringExtra("event_title"), intent.getSerializableExtra("event_cal") as Calendar)
@@ -28,10 +27,29 @@ class EventActivity : AppCompatActivity() {
         }
         val listView = findViewById<ListView>(R.id.main_listview)
         listView.adapter = MyCustomAdapter(this, eventList)//custom adapter
-        listView.setOnItemClickListener{parent, view, position, id ->
+        listView.setOnItemClickListener{ _, _, _, _ ->
             val t = Toast.makeText(this@EventActivity, "Hello", Toast.LENGTH_LONG)
             t.show()
         }
+        if(eventList.isEmpty()){
+            Toast.makeText(this@EventActivity,"No Events Currently", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.navigation_menu_event, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    @Override
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.menu_to_month) {
+            startActivity(Intent(this, MainActivity::class.java))
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private class MyCustomAdapter(context: Context, events: ArrayList<Event>): BaseAdapter() {

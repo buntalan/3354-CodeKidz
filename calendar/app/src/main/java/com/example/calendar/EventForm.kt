@@ -8,24 +8,24 @@ import android.widget.Button
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import java.io.Serializable
+import androidx.appcompat.widget.Toolbar
 import java.text.SimpleDateFormat
 import java.util.*
 
 class EventForm : AppCompatActivity(), View.OnClickListener {
-    /*private val mYear: Int = 0
-    private val mMonth: Int = 0
-    private val mDay: Int = 0
-    private val mHour: Int = 0
-    private val mMinute: Int = 0*/
 
     @TargetApi(24)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_form)
+
+        val myToolBar: Toolbar = findViewById(R.id.monthlyToolBar)
+        setSupportActionBar(myToolBar)
 
         val btnDate = findViewById<Button>(R.id.btn_date)
         val btnTime = findViewById<Button>(R.id.btn_time)
@@ -34,6 +34,7 @@ class EventForm : AppCompatActivity(), View.OnClickListener {
         val txtTitle = findViewById<EditText>(R.id.in_title)
 
         val btnSave = findViewById<Button>(R.id.saveButton)
+        val btnList = findViewById<Button>(R.id.eventListButton)
 
         val cal = Calendar.getInstance()
 
@@ -68,13 +69,37 @@ class EventForm : AppCompatActivity(), View.OnClickListener {
                 cal.get(Calendar.MINUTE), false).show()
         }
         btnSave.setOnClickListener {
+            if(txtTitle.text.toString() == "" || txtDate.text == "" || txtTime.text == ""){
+                Toast.makeText(this@EventForm, "All Fields Must Be Filled", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                val myIntent = Intent(this@EventForm, EventActivity::class.java)
+                myIntent.putExtra("event_title", txtTitle.text.toString())
+                myIntent.putExtra("event_cal", cal)
+                startActivity(myIntent)
+            }
+        }
+        btnList.setOnClickListener {
             val myIntent = Intent(this@EventForm, EventActivity::class.java)
-            myIntent.putExtra("event_title", txtTitle.text.toString())
-            myIntent.putExtra("event_cal", cal)
             startActivity(myIntent)
         }
     }
 
     override fun onClick(v: View) {
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.navigation_menu_event, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    @Override
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.menu_to_month) {
+            startActivity(Intent(this, MainActivity::class.java))
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

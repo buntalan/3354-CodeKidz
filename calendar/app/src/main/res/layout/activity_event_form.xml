@@ -8,6 +8,10 @@
     android:background="#009688"
     tools:context=".EventForm">
 
+    <include
+        android:id="@+id/monthlyToolBar"
+        layout="@layout/toolbar"></include>
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
@@ -15,7 +19,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/monthlyToolBar">
 
         <EditText
             android:id="@+id/in_title"

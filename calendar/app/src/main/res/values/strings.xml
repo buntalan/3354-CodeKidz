@@ -43,4 +43,5 @@
     <string name="select_time">SELECT TIME</string>
     <string name="select_date">SELECT DATE</string>
     <string name="date">Date</string>
+    <string name="return_to_home">Return to Home</string>
 </resources>
