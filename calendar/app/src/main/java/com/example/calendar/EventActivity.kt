@@ -12,7 +12,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class EventActivity : AppCompatActivity() {
-    val eventList = arrayListOf<Event>()
+    private val eventList = DataHolder.getInstance().events as ArrayList<Event>
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -38,6 +38,7 @@ class EventActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.navigation_menu_event, menu)
+        menuInflater.inflate(R.menu.navigation_menu_listitem, menu)
         return super.onCreateOptionsMenu(menu)
     }
 

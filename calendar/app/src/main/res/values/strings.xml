@@ -44,4 +44,6 @@
     <string name="select_date">SELECT DATE</string>
     <string name="date">Date</string>
     <string name="return_to_home">Return to Home</string>
+    <string name="edit_event">Edit Event</string>
+    <string name="delete_event">Delete Event</string>
 </resources>
