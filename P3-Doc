@@ -3,6 +3,15 @@ Where used: /calendar/app/src/main/java/com/example/calendar/DataHolder.java
   DataHolder is a Singleton Class as it is used only 1 time to create an instance of the ArrayList of events
 
 Location of test classes:
+  /calendar/app/src/androidTest/java/com/example/calendar/
+  AddDeleteEvent.kt: Creates a new events, saves it to the list, and finally, deletes this event
+  ChangeViewsTest.kt: Moves between the different views from weekly, to Three day, to daily, back to Monthly
+  EventListTest.kt: Creates an event (checks if am radio button works), saves this event, then creates another event 
+                    (checks if pm radio button works), saves this event. Next, goes back to home (Monthly view in this case)
+                    and checks event list option
+  MainActivityTest.kt: Checks multiple different functions on the Main page (Monthly view) such as the next month button and 
+                       "More Options" drop down
+  WeeklyTest.kt: Checks transition from Month view to week view through "More options"
   
 
 Instruction to build and use software:
