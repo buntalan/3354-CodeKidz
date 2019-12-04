@@ -1,1 +1,18 @@
-Project 3 
+Design Pattern: Model-View-Controller
+Where used:
+  calendar/app/src/main/java/com/example/calendar/:
+    EventActivity.kt = View
+    Event.java = Model
+    EventForm.kt = Controller
+
+Location of test classes:
+  
+
+Instruction to build and use software:
+  All relavent files to build and run this calendar program are in the calendar folder.
+  Open this folder in AndroidStudio and wait for AndroidStudio to build the project.
+  Once AndroidStudio finishes building the project, hit the run button and the emulated android phone should open the calendar.
+  The calendar will open in Month view. There will also be button below the month for the different functions available.
+  Pressing the event button will take you to the event page that asks you to create an event.
+  Pressing the week view button will take you to the week view based on the current week of the month.
+  Pressing the event view will take you to a list of the events for the date currently selected.
