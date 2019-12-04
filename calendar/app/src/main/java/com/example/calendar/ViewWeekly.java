@@ -95,7 +95,7 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
         Toolbar myToolbar = (Toolbar)findViewById(R.id.weeklyToolBar);
         setSupportActionBar(myToolbar);
 
-        mWeekViewType = TYPE_3WEEK_VIEW;
+        mWeekViewType = TYPE_WEEK_VIEW;
 
         hour = getIntent().getIntExtra(HOUR_OF_DAY, 0);
         day = getIntent().getIntExtra(DAY_OF_WEEK, 0);
@@ -106,6 +106,7 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
 
         // Ger reference for xml layout
         mWeekView = (WeekView) findViewById(R.id.weekView);
+        mWeekView.setNumberOfVisibleDays(7);
 
         // Set a WeekViewLoader to draw the events on load
         mWeekView.setWeekViewLoader(new WeekView.WeekViewLoader() {
@@ -120,22 +121,22 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
         });
 
         // Set EventClicker for this class
-        //mWeekView.setOnEventClickListener(this);
+        mWeekView.setOnEventClickListener(this);
 
         // Set WeekLoader for this class for infinite horizontal scrolling
         mWeekView.setWeekViewLoader(this);
 
         // Set long press listener for this class
-        //mWeekView.setEventLongPressListener(this);
+        mWeekView.setEventLongPressListener(this);
 
         // Set empty view click listener
-        //mWeekView.setEmptyViewClickListener(this);
+        mWeekView.setEmptyViewClickListener(this);
 
         // Set empty view click listener
-        //mWeekView.setAddEventClickListener(this);
+        mWeekView.setAddEventClickListener(this);
 
         // Set drag and drop listener
-        //mWeekView.setDropListener(this);
+        mWeekView.setDropListener(this);
 
         // Can choose other Listeners, but probably wont
 //        setupDateTimeInterpreter();
@@ -199,12 +200,12 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
         for (int i = 0; i < eventList.size(); i++) {
             calendar.setTime(eventList.get(i).getCalendar().getTime());
             week = calendar.get(Calendar.WEEK_OF_YEAR);
-            if (week == weekNumber) {
-                startTime = new DayTime(calendar.get(Calendar.DAY_OF_WEEK) - 1, calendar.get(Calendar.HOUR_OF_DAY) - 1, calendar.get(Calendar.MINUTE));
-                endTime = new DayTime(calendar.get(Calendar.DAY_OF_WEEK) - 1, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
+            //if (week == weekNumber) {
+                startTime = new DayTime((calendar.get(Calendar.DAY_OF_WEEK) % 7)-1, calendar.get(Calendar.HOUR_OF_DAY) % 24, calendar.get(Calendar.MINUTE));
+                endTime = new DayTime((calendar.get(Calendar.DAY_OF_WEEK) % 7)-1, (calendar.get(Calendar.HOUR_OF_DAY) % 24) + 1, calendar.get(Calendar.MINUTE));
                 event = new WeekViewEvent("ID" + 0, eventList.get(i).getTitle(), startTime, endTime);
                 events.add(event);
-            }
+            //}
         }
 
         return events;
@@ -214,19 +215,11 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
     // For either day view or add event
     @Override
     public void onEmptyViewLongPress(DayTime time) {
-        Toast.makeText(this, "Empty view long pressed: " + getEventTitle(time), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Empty view long pressed: " + getEventTitle(time), Toast.LENGTH_SHORT).show();
     }
 
     // For dragging events
-    private final class DragTapListener implements View.OnLongClickListener {
-        @Override
-        public boolean onLongClick(View v) {
-            ClipData data = ClipData.newPlainText("", "");
-            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-            v.startDrag(data, shadowBuilder, v, 0);
-            return true;
-        }
-    }
+
 
     // For retrieving the date from MonthlyView activity
     public static Intent newIntent(Context packageContext,long date) {
@@ -309,9 +302,6 @@ public class ViewWeekly extends AppCompatActivity implements WeekView.EventClick
                     mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12,
                             getResources().getDisplayMetrics()));
                 }
-                return true;
-            case R.id.menu_to_year:
-                // Go to year view
                 return true;
             case R.id.menu_to_event:
                 // Go to event

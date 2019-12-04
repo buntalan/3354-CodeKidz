@@ -18,10 +18,6 @@
         android:title="@string/to_daily"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/menu_to_year"
-        android:title="@string/to_yearly"
-        app:showAsAction="never"/>
-    <item
         android:id="@+id/menu_to_event"
         android:title="@string/to_event"
         app:showAsAction="never"/>
